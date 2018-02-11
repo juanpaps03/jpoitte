@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block page_title %}
+
+      jpoitte
+
+      {% endblock %}
+  </title>
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+  <meta name="author" content="{% block meta_author %}{% endblock %}">
+  <meta charset="UTF-8">
+  <meta name="keywords" content="onepage, resume, CV HTML template, personal Vcard, html resume, free resume template, free HTML template, free bootstrap template, personal portfolio, free html portfolio">
+  <meta name="author" content="http://trendytheme.net/">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Web Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+	<!-- Bootstrap core CSS -->
+	<link href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+	<!-- Font Awesome CSS -->
+	<link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet" media="screen">
+	<!-- Animate css -->
+  <link href="{{ url_for('static', filename='assets/css/animate.css') }}" rel="stylesheet">
+  <!-- Magnific css -->
+	<link href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}" rel="stylesheet">
+	<!-- Custom styles CSS -->
+	<link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet" media="screen">
+  <!-- Responsive CSS -->
+  <link href="{{ url_for('static', filename='assets/css/responsive.css') }}" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- <link rel="shortcut icon" href="assets/images/ico/favicon.png"> -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static', filename='assets/images/ico/apple-touch-icon-144-precomposed.png') }}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ url_for('static', filename='assets/images/ico/apple-touch-icon-114-precomposed.png') }}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ url_for('static', filename='assets/images/ico/apple-touch-icon-72-precomposed.png') }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='assets/images/ico/apple-touch-icon-57-precomposed.png') }}">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ _GOOGLE_ANALYTICS }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ _GOOGLE_ANALYTICS }}');
+  </script>
+
+  {% block css %}{% endblock %}
+
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% block body %}
+{% with form=form  %}
+{#{% include "nav.html" %}#}
+{% endwith %}
+
+<header>{% block header %}{% endblock %}</header>
+
+
+  <div role="main">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="row">
+      <div class="col-md-12">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
+         {{message}}
+        </div><!-- end .alert -->
+        {% endfor %}
+      </div><!-- end col-md -->
+    </div><!-- end row -->
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+
+{% include "footer.html" %}
+  <script src="{{ url_for('static', filename='assets/js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.sticky.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/smoothscroll.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.countTo.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.inview.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.easypiechart.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.shuffle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>
+  <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+  <script src="{{ url_for('static', filename='assets/js/jquery.fitvids.js') }}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+  <script src="{{ url_for('static', filename='assets/js/scripts.js') }}"></script>
+{% block js %}{% endblock %}
+<!-- end scripts -->
+{% endblock %}
+</body>
+</html>
+
