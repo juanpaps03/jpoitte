@@ -2,7 +2,6 @@
 
 # C extensions
 *.so
-.idea/
 # Packages
 *.egg
 *.egg-info
@@ -44,3 +43,6 @@ docs/_build
 
 # Virtualenvs
 env/
+
+#IDE
+.idea/
